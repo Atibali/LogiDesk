@@ -1,51 +1,99 @@
 # LogiDesk – Logistics Operations HelpDesk System
 
-LogiDesk is a proposed web-based HelpDesk application for a logistics business. It centralizes shipment-related support requests so customers can raise issues, agents can investigate and resolve them, managers can assign work, and administrators can manage access.
+LogiDesk is a modern web-based HelpDesk application designed for logistics operations. It centralizes shipment-related support requests so customers can report and track issues, support agents can investigate and resolve them, operations managers can dispatch and monitor workloads, and administrators can oversee system access.
 
-## Problem
-Support requests about delayed shipments, lost packages, damaged goods, incorrect addresses and tracking issues can be difficult to coordinate when handled across calls, email and spreadsheets. LogiDesk provides a central ticket workflow and communication history.
+---
 
-## Scope
-**Initial scope**
-- Authentication and role-based access
-- Customer, support-agent, manager and administrator roles
-- Basic shipment reference records
-- Ticket creation, assignment, status updates and comments
-- Ticket history and basic dashboard summaries
+## Technology Stack
 
-**Not in the initial scope**
-- Real-time GPS/carrier integrations
-- Route optimization, fleet management or warehouse inventory
-- Payment processing
-- Native mobile application
-- AI ticket classification
+- **Backend**: ASP.NET Core Web API (.NET 10 / .NET 11)
+  - **Data Access & ORM**: Entity Framework Core with SQLite
+  - **Authentication**: JWT (JSON Web Tokens) with ASP.NET Core Authentication/Authorization
+  - **Password Security**: Cryptographically salted password hashing (PBKDF2)
+  - **API Documentation**: Swagger / OpenAPI
+  - **Testing**: xUnit Automated Test Suite
+- **Frontend**: Angular SPA (Standalone components, reactive signals, TypeScript)
+  - **Routing & Security**: Functional Route Guards (`authGuard`, `adminGuard`)
+  - **HTTP**: HttpClient with JWT Bearer Interceptor
+  - **Design**: Modern, responsive, clean CSS layout with accessibility in mind
 
-## Proposed roles
-- Customer
-- Support Agent
-- Operations Manager
-- Administrator
+---
 
-## Proposed ticket statuses
-`OPEN` → `ASSIGNED` → `IN_PROGRESS` → `RESOLVED` → `CLOSED`
+## Project Structure
 
-`ON_HOLD` and reopening a resolved ticket may be added after workflow rules are confirmed.
+```text
+LogiDesk/
+├── .github/
+│   └── PULL_REQUEST_TEMPLATE.md         # Team Pull Request standard template
+├── docs/
+│   ├── ARCHITECTURE.md                  # High-level architecture and component diagrams
+│   ├── GIT_WORKFLOW.md                  # Branch naming, commit conventions & PR guidelines
+│   └── API_SPECIFICATION.md             # REST API endpoints, schemas and contracts
+├── src/
+│   ├── backend/
+│   │   ├── LogiDesk.sln                 # .NET Visual Studio Solution
+│   │   ├── LogiDesk.Domain/             # Entities, Enums, Domain Interfaces
+│   │   ├── LogiDesk.Application/        # DTOs, Service Interfaces, Business Logic
+│   │   ├── LogiDesk.Infrastructure/     # EF Core DbContext, Repositories, JWT, Hashing
+│   │   ├── LogiDesk.Api/                # Web API Controllers, Middlewares, Configuration
+│   │   └── LogiDesk.Tests/              # Automated Unit & Integration Tests (xUnit)
+│   └── frontend/
+│       ├── package.json                 # Angular dependencies and npm scripts
+│       └── src/app/                     # Standalone components, services, guards, pages
+├── LogiDesk_Initial_Project_Documentation_v0.1.docx
+├── LogiDesk_Initial_Product_Backlog.xlsx
+├── .gitignore                           # Excludes build artifacts, secrets & locks
+└── README.md
+```
 
-## Proposed core entities
-- Users
-- Shipments
-- Tickets
-- Categories
-- Comments
-- TicketHistory
-- Notifications
+---
 
-## Technology
-**To be decided.** Frontend framework, backend framework, database, ORM, testing tools and deployment approach will be updated after the training track is confirmed.
+## Getting Started
 
-## Project documents
-- `LogiDesk_Initial_Project_Documentation_v0.1.docx` – project overview, scope, requirements, user stories, acceptance criteria, conceptual data model, API capability list, QA scenarios and pending decisions.
-- `LogiDesk_Initial_Product_Backlog.xlsx` – proposed epics, stories, tasks, acceptance criteria, priorities and planning columns.
+### Prerequisites
+- [.NET SDK](https://dotnet.microsoft.com/download) (v10.0 or v11.0)
+- [Node.js](https://nodejs.org/) (v20+ or v24+) & npm
+- Git
 
-## Important
-This is an initial training-project proposal, not an approved business specification. Confirm the official HelpDesk requirements and permission to use the logistics context with the trainer before implementation. Use synthetic/demo data only.
+### 1. Backend Setup & Run (.NET API)
+
+```bash
+cd src/backend/LogiDesk.Api
+dotnet run
+```
+- API Base URL: `http://localhost:5000`
+- OpenAPI document: `http://localhost:5000/openapi/v1.json`
+
+### 2. Run Backend Automated Tests
+
+```bash
+cd src/backend
+dotnet test
+```
+
+### 3. Frontend Setup & Run (Angular)
+
+```bash
+cd src/frontend
+npm install
+npm start
+```
+- Web Application URL: `http://localhost:4200` (the frontend calls the API at `http://localhost:5000`)
+
+---
+
+## Pre-seeded Demo Accounts
+
+For testing authentication, permissions and role-based workflows, the database is pre-seeded with demo accounts:
+
+| Role | Email | Password |
+|---|---|---|
+| **Administrator** | `admin@logidesk.com` | `Admin@123` |
+| **Operations Manager** | `manager@logidesk.com` | `Manager@123` |
+| **Support Agent** | `agent@logidesk.com` | `Agent@123` |
+| **Customer** | `customer@logidesk.com` | `Customer@123` |
+
+---
+
+## Git Workflow & Engineering Guidelines
+For branching conventions (`feature/LD-XX-...`), commit message formats (`feat(scope): [LD-XX] message`), and PR review checklists, consult [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md).

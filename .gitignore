@@ -1,0 +1,111 @@
+# ==========================================
+# LogiDesk Git Ignore Configuration
+# Covers .NET, Angular, Node, IDEs & OS
+# ==========================================
+
+# ------------------------------------------
+# .NET / C# / Visual Studio
+# ------------------------------------------
+bin/
+obj/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.userprefs
+*.pidb
+*.booproj
+*.svclog
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.assets.json
+
+# Test Results
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# ------------------------------------------
+# Node.js / Angular
+# ------------------------------------------
+node_modules/
+dist/
+tmp/
+out-tsc/
+bazel-out/
+.angular/
+.npm
+.yarn/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Angular build output
+src/frontend/dist/
+src/frontend/.angular/
+
+# ------------------------------------------
+# SQLite / Local Databases
+# ------------------------------------------
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# ------------------------------------------
+# Environment & Secrets
+# ------------------------------------------
+appsettings.Local.json
+appsettings.Secrets.json
+.env
+.env.local
+.env.*.local
+*.pfx
+*.key
+
+# ------------------------------------------
+# OS & Office Lock Files
+# ------------------------------------------
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Microsoft Office temporary files
+~$*.docx
+~$*.xlsx
+~$*.pptx
