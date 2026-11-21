@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="LogiDesk.Api/LogiDesk.Api.csproj" />
+  <Project Path="LogiDesk.Application/LogiDesk.Application.csproj" />
+  <Project Path="LogiDesk.Domain/LogiDesk.Domain.csproj" />
+  <Project Path="LogiDesk.Infrastructure/LogiDesk.Infrastructure.csproj" />
+  <Project Path="LogiDesk.Tests/LogiDesk.Tests.csproj" />
+</Solution>
